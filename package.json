@@ -1,0 +1,18 @@
+{
+  "name": "torch-pyodide-docs",
+  "packageManager": "yarn@4.9.2",
+  "devDependencies": {
+    "@veehz/torch": "^0.1.2",
+    "glob": "^11.0.0",
+    "markdown-it-mathjax3": "^4",
+    "pyodide": "^0.26.0",
+    "vitepress": "^1.6.4"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "gen-repl": "node scripts/generate-repl.mjs",
+    "build": "yarn gen-repl && yarn docs:build"
+  }
+}
