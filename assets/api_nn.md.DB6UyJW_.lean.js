@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as t,ag as n}from"./chunks/framework.v60IvRxs.js";const c=JSON.parse('{"title":"torch.nn","description":"","frontmatter":{},"headers":[],"relativePath":"api/nn.md","filePath":"api/nn.md"}'),e={name:"api/nn.md"};function h(l,s,p,d,r,o){return a(),t("div",null,[...s[0]||(s[0]=[n("",39)])])}const E=i(e,[["render",h]]);export{c as __pageData,E as default};
