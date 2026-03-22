@@ -13,7 +13,7 @@ export default defineConfig({
     "PyTorch-like machine learning library for Source Academy (Pyodide)",
   base: process.env.VITEPRESS_BASE ?? "/torch-pyodide-docs/",
 
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  head: [["link", { rel: "icon", href: `${process.env.VITEPRESS_BASE ?? "/torch-pyodide-docs/"}favicon.ico` }]],
 
   markdown: {
     config(md) {

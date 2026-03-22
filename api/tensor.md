@@ -33,7 +33,16 @@ torch.randn(2, 3)
 
 ## Tensor Methods
 
-The contents of a tensor can be accessed and modified using Python’s indexing and slicing notation **(TODO)**.
+The contents of a tensor can be accessed using Python’s indexing and slicing notation:
+
+```python repl
+x = torch.tensor([[1, 2, 3], [4, 5, 6]])
+x[0]
+x[1, 2]
+x[0:2]
+```
+
+Integer indexing selects along dimension 0 and returns a tensor with one fewer dimension. Tuple indexing chains dimension-0 selections (e.g. `x[i, j]` is equivalent to `x[i][j]`). Slice indexing returns a new tensor containing the selected rows.
 
 Use `torch.Tensor.item()` to get a Python number from a tensor containing a single value:
 

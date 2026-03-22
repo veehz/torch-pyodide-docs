@@ -83,21 +83,72 @@ out = layer(x)          # shape: (3, 2)
 
 ---
 
-### [[torch.nn.Conv1d]] **(TODO)**
+### [[torch.nn.Conv1d]]
+
+```python
+nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
+```
 
 Applies a 1D convolution over an input signal composed of several input planes.
 
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `in_channels` | `int` | Number of channels in the input. |
+| `out_channels` | `int` | Number of channels produced by the convolution. |
+| `kernel_size` | `int` or `list` | Size of the convolving kernel. |
+| `stride` | `int` or `list` | Stride of the convolution. Default: `1`. |
+| `padding` | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`. |
+| `dilation` | `int` or `list` | Spacing between kernel elements. Default: `1`. |
+| `groups` | `int` | Number of blocked connections from input to output channels. Default: `1`. |
+| `bias` | `bool` | If `True`, adds a learnable bias to the output. Default: `True`. |
+
 ---
 
-### [[torch.nn.Conv2d]] **(TODO)**
+### [[torch.nn.Conv2d]]
+
+```python
+nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
+```
 
 Applies a 2D convolution over an input signal composed of several input planes.
 
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `in_channels` | `int` | Number of channels in the input image. |
+| `out_channels` | `int` | Number of channels produced by the convolution. |
+| `kernel_size` | `int` or `list` | Size of the convolving kernel. |
+| `stride` | `int` or `list` | Stride of the convolution. Default: `1`. |
+| `padding` | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`. |
+| `dilation` | `int` or `list` | Spacing between kernel elements. Default: `1`. |
+| `groups` | `int` | Number of blocked connections from input to output channels. Default: `1`. |
+| `bias` | `bool` | If `True`, adds a learnable bias to the output. Default: `True`. |
+
 ---
 
-### [[torch.nn.Conv3d]] **(TODO)**
+### [[torch.nn.Conv3d]]
+
+```python
+nn.Conv3d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
+```
 
 Applies a 3D convolution over an input signal composed of several input planes.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `in_channels` | `int` | Number of channels in the input volume. |
+| `out_channels` | `int` | Number of channels produced by the convolution. |
+| `kernel_size` | `int` or `list` | Size of the convolving kernel. |
+| `stride` | `int` or `list` | Stride of the convolution. Default: `1`. |
+| `padding` | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`. |
+| `dilation` | `int` or `list` | Spacing between kernel elements. Default: `1`. |
+| `groups` | `int` | Number of blocked connections from input to output channels. Default: `1`. |
+| `bias` | `bool` | If `True`, adds a learnable bias to the output. Default: `True`. |
 
 ---
 
@@ -142,13 +193,26 @@ Creates a criterion that measures the Binary Cross Entropy between the target an
 
 ---
 
-### [[torch.nn.CrossEntropyLoss]] **(TODO)**
+### [[torch.nn.CrossEntropyLoss]]
 
 ```python
 nn.CrossEntropyLoss()
 ```
 
-Cross entropy loss for classification tasks.
+This criterion computes the cross entropy loss between input logits and target class indices.
+
+**Input:** `(N, C)` where `N` is the batch size and `C` is the number of classes. Values are unnormalized logits.
+
+**Target:** `(N,)` where each value is an integer in `[0, C)`.
+
+**Example**
+
+```python
+criterion = nn.CrossEntropyLoss()
+input = torch.randn(3, 5)      # batch of 3, 5 classes
+target = torch.tensor([1, 0, 4])
+loss = criterion(input, target)
+```
 
 ---
 
@@ -183,3 +247,15 @@ Applies the rectified linear unit function element-wise.
 
 ### [[torch.nn.functional.sigmoid]]
 Applies the sigmoid function element-wise.
+
+### [[torch.nn.functional.cross_entropy]]
+Computes the cross entropy loss between input logits and target.
+
+### [[torch.nn.functional.conv1d]]
+Applies a 1D convolution over an input signal.
+
+### [[torch.nn.functional.conv2d]]
+Applies a 2D convolution over an input signal.
+
+### [[torch.nn.functional.conv3d]]
+Applies a 3D convolution over an input signal.

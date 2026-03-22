@@ -8,8 +8,8 @@ Top-level functions in the `torch` namespace.
 
 | Function | Description |
 |---|---|
-| [`is_tensor`]((torch.is.tensor)) **(TODO)** | Returns True if obj is a PyTorch tensor. |
-| [`is_nonzero`]((torch.is.nonzero)) **(TODO)** | Returns True if the input is a single element tensor which is not equal to zero after type conversions. |
+| [`is_tensor`]((torch.is.tensor)) | Returns True if obj is a PyTorch tensor. |
+| [`is_nonzero`]((torch.is.nonzero)) | Returns True if the input is a single element tensor which is not equal to zero after type conversions. |
 | [`numel`]((torch.numel)) | Returns the total number of elements in the input tensor. |
 
 #### Creation Ops
@@ -21,10 +21,10 @@ Top-level functions in the `torch` namespace.
 | [`zeros_like`]((torch.zeros_like)) | Returns a tensor filled with the scalar value 0, with the same shape as input |
 | [`ones`]((torch.ones)) | Returns a tensor filled with the scalar value 1, with the shape defined by the variable argument size. |
 | [`ones_like`]((torch.ones_like)) | Returns a tensor filled with the scalar value 1, with the same shape as input |
-| [`empty`]((torch.empty)) **(TODO)** | Returns an uninitialized tensor. |
-| [`empty_like`]((torch.empty_like)) **(TODO)** | Returns an uninitialized tensor with the same shape as input |
-| [`full`]((torch.full)) **(TODO)** | Returns a tensor filled with the scalar value, with the shape defined by the variable argument size. |
-| [`full_like`]((torch.full_like)) **(TODO)** | Returns a tensor filled with the scalar value, with the same shape as input |
+| [`empty`]((torch.empty)) | Returns an uninitialized tensor. |
+| [`empty_like`]((torch.empty_like)) | Returns an uninitialized tensor with the same shape as input |
+| [`full`]((torch.full)) | Returns a tensor filled with the scalar value, with the shape defined by the variable argument size. |
+| [`full_like`]((torch.full_like)) | Returns a tensor filled with the scalar value, with the same shape as input |
 | [`arange`]((torch.arange)) | Returns a 1-D tensor of size $$ \lceil \frac{\text{end} - \text{start}}{\text{step}} \rceil $$ with values from start to end with step step. |
 | [`linspace`]((torch.linspace)) | Creates a one-dimensional tensor of size `steps` whose values are evenly spaced from `start` to `end`, inclusive. |
 
@@ -35,11 +35,11 @@ Top-level functions in the `torch` namespace.
 | [`seed`]((torch.seed)) | Sets the seed for generating random numbers to a non-deterministic random number. |
 | [`manual_seed`]((torch.manual_seed)) | Sets the seed for generating random numbers. |
 | [`rand`]((torch.rand)) | Returns a tensor filled with random numbers from a uniform distribution on the interval $$ [0, 1) $$. |
-| [`rand_like`]((torch.rand_like)) **(TODO)** | Returns a tensor with the same size as `input` that is filled with random numbers from a uniform distribution on the interval $$ [0, 1) $$. |
+| [`rand_like`]((torch.rand_like)) | Returns a tensor with the same size as `input` that is filled with random numbers from a uniform distribution on the interval $$ [0, 1) $$. |
 | [`randint`]((torch.randint)) | Returns a tensor filled with random integers generated uniformly between `low` (inclusive) and `high` (exclusive). |
-| [`randint_like`]((torch.randint_like)) **(TODO)** | Returns a tensor with the same shape as `input` that is filled with random integers generated uniformly between `low` (inclusive) and `high` (exclusive). |
+| [`randint_like`]((torch.randint_like)) | Returns a tensor with the same shape as `input` that is filled with random integers generated uniformly between `low` (inclusive) and `high` (exclusive). |
 | [`randn`]((torch.randn)) | Returns a tensor filled with random numbers from a normal distribution with mean 0 and variance 1 (also called the standard normal distribution). |
-| [`randn_like`]((torch.randn_like)) **(TODO)** | Returns a tensor with the same size as `input` that is filled with random numbers from a normal distribution with mean 0 and variance 1. |
+| [`randn_like`]((torch.randn_like)) | Returns a tensor with the same size as `input` that is filled with random numbers from a normal distribution with mean 0 and variance 1. |
 | [`randperm`]((torch.randperm)) | Returns a tensor containing a random permutation of integers in the interval $$ [0, n) $$. |
 
 ### Locally disabling gradient computation
@@ -93,7 +93,7 @@ torch.reshape(input, *args) -> Tensor
 Returns a tensor with the same data and number of elements as `input` but with the specified shape.
 ```python repl
 x = torch.tensor([1, 2, 3, 4])
-x.reshape(2, 2)
+torch.reshape(x, (2, 2))
 ```
 
 ### [[torch.squeeze]]
@@ -103,7 +103,7 @@ torch.squeeze(input, dim=None) -> Tensor
 Returns a tensor with all specified dimensions of input of size 1 removed.
 ```python repl
 x = torch.tensor([[[1], [2]]])
-x.squeeze()
+torch.squeeze(x)
 ```
 
 ### [[torch.unsqueeze]]
@@ -113,7 +113,7 @@ torch.unsqueeze(input, dim) -> Tensor
 Returns a new tensor with a dimension of size one inserted at the specified position.
 ```python repl
 x = torch.tensor([1, 2])
-x.unsqueeze(0)
+torch.unsqueeze(x, 0)
 ```
 
 ### [[torch.transpose]]
@@ -123,7 +123,7 @@ torch.transpose(input, dim0, dim1) -> Tensor
 Returns a tensor that is a transposed version of `input`.
 ```python repl
 x = torch.tensor([[1, 2], [3, 4]])
-x.transpose(0, 1)
+torch.transpose(x, 0, 1)
 ```
 
 ### [[torch.flatten]]
@@ -133,7 +133,7 @@ torch.flatten(input, start_dim=0, end_dim=-1) -> Tensor
 Flattens `input` tensor by reshaping it into a one-dimensional tensor.
 ```python repl
 x = torch.tensor([[1, 2], [3, 4]])
-x.flatten()
+torch.flatten(x)
 ```
 
 ### [[torch.sum]]
@@ -143,7 +143,7 @@ torch.sum(input, dim=None, keepdim=False) -> Tensor
 Returns the sum of all elements in the tensor.
 ```python repl
 x = torch.tensor([1., 2.])
-x.sum()
+torch.sum(x)
 ```
 
 ### [[torch.mean]]
@@ -153,7 +153,7 @@ torch.mean(input, dim=None, keepdim=False) -> Tensor
 Returns the mean value of all elements in the tensor.
 ```python repl
 x = torch.tensor([1., 2.])
-x.mean()
+torch.mean(x)
 ```
 
 ### [[torch.max]]
@@ -163,7 +163,7 @@ torch.max(input, dim=None, keepdim=False) -> Tensor
 Returns the maximum value of all elements in the tensor.
 ```python repl
 x = torch.tensor([1., 2.])
-x.max()
+torch.max(x)
 ```
 
 ### [[torch.min]]
@@ -173,7 +173,7 @@ torch.min(input, dim=None, keepdim=False) -> Tensor
 Returns the minimum value of all elements in the tensor.
 ```python repl
 x = torch.tensor([1., 2.])
-x.min()
+torch.min(x)
 ```
 
 ### [[torch.add]]
@@ -183,7 +183,7 @@ torch.add(input, other) -> Tensor
 Adds `other` to `input`.
 ```python repl
 x = torch.tensor([1, 2])
-x.add(3)
+torch.add(x, 3)
 ```
 
 ### [[torch.sub]]
@@ -193,7 +193,7 @@ torch.sub(input, other) -> Tensor
 Subtracts `other` from `input`.
 ```python repl
 x = torch.tensor([1, 2])
-x.sub(3)
+torch.sub(x, 3)
 ```
 
 ### [[torch.mul]]
@@ -203,7 +203,7 @@ torch.mul(input, other) -> Tensor
 Multiplies `input` by `other`.
 ```python repl
 x = torch.tensor([1, 2])
-x.mul(3)
+torch.mul(x, 3)
 ```
 
 ### [[torch.div]]
@@ -213,7 +213,7 @@ torch.div(input, other) -> Tensor
 Divides `input` by `other`.
 ```python repl
 x = torch.tensor([1., 2.])
-x.div(2)
+torch.div(x, 2)
 ```
 
 ### [[torch.pow]]
@@ -223,7 +223,7 @@ torch.pow(input, other) -> Tensor
 Takes the power of each element in `input` with `other`.
 ```python repl
 x = torch.tensor([2., 3.])
-x.pow(2)
+torch.pow(x, 2)
 ```
 
 ### [[torch.matmul]]
@@ -234,7 +234,7 @@ Matrix product of two tensors.
 ```python repl
 x = torch.tensor([[1, 2]])
 y = torch.tensor([[3], [4]])
-x.matmul(y)
+torch.matmul(x, y)
 ```
 
 ### [[torch.neg]]
@@ -244,7 +244,7 @@ torch.neg(input) -> Tensor
 Returns a new tensor with the negative of the elements of `input`.
 ```python repl
 x = torch.tensor([1, -2])
-x.neg()
+torch.neg(x)
 ```
 
 ### [[torch.abs]]
@@ -254,7 +254,7 @@ torch.abs(input) -> Tensor
 Computes the element-wise absolute value of the given input tensor.
 ```python repl
 x = torch.tensor([1, -2])
-x.abs()
+torch.abs(x)
 ```
 
 ### [[torch.log]]
@@ -264,7 +264,7 @@ torch.log(input) -> Tensor
 Returns a new tensor with the natural logarithm of the elements of `input`.
 ```python repl
 x = torch.tensor([1., 2.])
-x.log()
+torch.log(x)
 ```
 
 ### [[torch.exp]]
@@ -274,7 +274,7 @@ torch.exp(input) -> Tensor
 Returns a new tensor with the exponential of the elements of the input tensor.
 ```python repl
 x = torch.tensor([1., 2.])
-x.exp()
+torch.exp(x)
 ```
 
 ### [[torch.sqrt]]
@@ -284,7 +284,7 @@ torch.sqrt(input) -> Tensor
 Returns a new tensor with the square-root of the elements of `input`.
 ```python repl
 x = torch.tensor([1., 4.])
-x.sqrt()
+torch.sqrt(x)
 ```
 
 ### [[torch.square]]
@@ -294,7 +294,7 @@ torch.square(input) -> Tensor
 Returns a new tensor with the square of the elements of `input`.
 ```python repl
 x = torch.tensor([1., 4.])
-x.square()
+torch.square(x)
 ```
 
 ### [[torch.sin]]
@@ -304,7 +304,7 @@ torch.sin(input) -> Tensor
 Returns a new tensor with the sine of the elements of `input`.
 ```python repl
 x = torch.tensor([0., 3.14])
-x.sin()
+torch.sin(x)
 ```
 
 ### [[torch.cos]]
@@ -314,7 +314,7 @@ torch.cos(input) -> Tensor
 Returns a new tensor with the cosine of the elements of `input`.
 ```python repl
 x = torch.tensor([0., 3.14])
-x.cos()
+torch.cos(x)
 ```
 
 ### [[torch.tan]]
@@ -324,7 +324,7 @@ torch.tan(input) -> Tensor
 Returns a new tensor with the tangent of the elements of `input`.
 ```python repl
 x = torch.tensor([0., 3.14])
-x.tan()
+torch.tan(x)
 ```
 
 ### [[torch.sigmoid]]
@@ -334,7 +334,7 @@ torch.sigmoid(input) -> Tensor
 Applies the sigmoid function element-wise.
 ```python repl
 x = torch.tensor([0., 1.])
-x.sigmoid()
+torch.sigmoid(x)
 ```
 
 ### [[torch.relu]]
@@ -344,7 +344,7 @@ torch.relu(input) -> Tensor
 Applies the rectified linear unit function element-wise.
 ```python repl
 x = torch.tensor([-1., 1.])
-x.relu()
+torch.relu(x)
 ```
 
 ### [[torch.sign]]
@@ -354,7 +354,7 @@ torch.sign(input) -> Tensor
 Returns a new tensor with the sign of the elements of `input`.
 ```python repl
 x = torch.tensor([-1., 0., 1.])
-x.sign()
+torch.sign(x)
 ```
 
 ### [[torch.reciprocal]]
@@ -364,7 +364,7 @@ torch.reciprocal(input) -> Tensor
 Returns a new tensor with the reciprocal of the elements of `input`.
 ```python repl
 x = torch.tensor([2., 4.])
-x.reciprocal()
+torch.reciprocal(x)
 ```
 
 ### [[torch.nan_to_num]]
@@ -374,7 +374,7 @@ torch.nan_to_num(input) -> Tensor
 Replaces NaN, positive infinity, and negative infinity values in `input` with the corresponding replacement values.
 ```python repl
 x = torch.tensor([1., float('nan')])
-x.nan_to_num()
+torch.nan_to_num(x)
 ```
 
 ### [[torch.lt]]
@@ -384,7 +384,7 @@ torch.lt(input, other) -> Tensor
 Computes `self < other` element-wise.
 ```python repl
 x = torch.tensor([1, 2])
-x.lt(2)
+torch.lt(x, 2)
 ```
 
 ### [[torch.gt]]
@@ -394,7 +394,7 @@ torch.gt(input, other) -> Tensor
 Computes `self > other` element-wise.
 ```python repl
 x = torch.tensor([1, 2])
-x.gt(1)
+torch.gt(x, 1)
 ```
 
 ### [[torch.le]]
@@ -404,7 +404,7 @@ torch.le(input, other) -> Tensor
 Computes `self <= other` element-wise.
 ```python repl
 x = torch.tensor([1, 2])
-x.le(1)
+torch.le(x, 1)
 ```
 
 ### [[torch.ge]]
@@ -414,7 +414,7 @@ torch.ge(input, other) -> Tensor
 Computes `self >= other` element-wise.
 ```python repl
 x = torch.tensor([1, 2])
-x.ge(2)
+torch.ge(x, 2)
 ```
 
 ### [[torch.eq]]
@@ -424,7 +424,7 @@ torch.eq(input, other) -> Tensor
 Computes `self == other` element-wise.
 ```python repl
 x = torch.tensor([1, 2])
-x.eq(2)
+torch.eq(x, 2)
 ```
 
 ### [[torch.ne]]
@@ -434,7 +434,7 @@ torch.ne(input, other) -> Tensor
 Computes `self != other` element-wise.
 ```python repl
 x = torch.tensor([1, 2])
-x.ne(2)
+torch.ne(x, 2)
 ```
 
 ### [[torch.allclose]]
@@ -445,6 +445,5 @@ This function checks if `input` and `other` satisfy the condition.
 ```python repl
 x = torch.tensor([1., 2.])
 y = torch.tensor([1.00001, 2.])
-x.allclose(y)
+torch.allclose(x, y)
 ```
-
