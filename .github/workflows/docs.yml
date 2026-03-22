@@ -26,6 +26,8 @@ jobs:
         run: yarn install --immutable
 
       - name: Build docs
+        env:
+          VITEPRESS_BASE: /${{ github.event.repository.name }}/
         run: yarn build
 
       - name: Deploy to GitHub Pages

@@ -11,7 +11,7 @@ export default defineConfig({
   title: "torch",
   description:
     "PyTorch-like machine learning library for Source Academy (Pyodide)",
-  base: "/torch-pyodide-docs/",
+  base: process.env.VITEPRESS_BASE ?? "/torch-pyodide-docs/",
 
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
