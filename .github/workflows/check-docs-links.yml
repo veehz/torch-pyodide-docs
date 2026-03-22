@@ -1,0 +1,23 @@
+name: Check Docs Links
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Deploy Docs"]
+    types:
+      - completed
+
+jobs:
+  link-checker:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+
+      - run: ln -s . ${{ github.event.repository.name }}
+
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --root-dir . --verbose --no-progress './**/*.html'
+          fail: true
