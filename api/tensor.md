@@ -114,7 +114,7 @@ x = torch.tensor([[1, 2], [3, 4]])
 x.shape
 ```
 
-### [[torch.Tensor.data]]
+### torch.Tensor.data
 Returns a detached view of the tensor data (no gradient).
 ```python repl
 x = torch.tensor([1., 2.], requires_grad=True)
@@ -138,12 +138,16 @@ y.backward()
 x.grad
 ```
 
-### [[torch.Tensor.T]]
+### torch.Tensor.T
 Returns a view of this tensor with its dimensions reversed.
 ```python repl
 x = torch.tensor([[1, 2], [3, 4]])
 x.T
 ```
+
+> [!WARNING]
+> The use of `Tensor.T` on tensors of dimension other than 2 to reverse their shape is deprecated and it will throw an error.
+
 
 ### [[torch.Tensor.tolist]]
 ```python

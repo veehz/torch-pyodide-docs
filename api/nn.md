@@ -28,9 +28,9 @@ class MyModel(nn.Module):
 
 ---
 
-### [[torch.nn.Parameter]]
+### [[torch.nn.parameter.Parameter]]
 
-A kind of Tensor that is to be considered a module parameter.
+A kind of Tensor that is to be considered a module parameter. Also accessible as `torch.nn.Parameter`.
 
 ---
 

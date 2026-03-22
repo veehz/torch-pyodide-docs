@@ -327,7 +327,7 @@ x = torch.tensor([0., 3.14])
 torch.tan(x)
 ```
 
-### [[torch.sigmoid]]
+### torch.sigmoid
 ```python
 torch.sigmoid(input) -> Tensor
 ```
@@ -337,13 +337,13 @@ x = torch.tensor([0., 1.])
 torch.sigmoid(x)
 ```
 
-### [[torch.relu]]
+### torch.relu
 ```python
 torch.relu(input) -> Tensor
 ```
-Applies the rectified linear unit function element-wise.
+Applies the rectified linear unit function element-wise: `max(0, x)`.
 ```python repl
-x = torch.tensor([-1., 1.])
+x = torch.tensor([-1., 0., 1.])
 torch.relu(x)
 ```
 

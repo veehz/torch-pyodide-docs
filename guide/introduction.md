@@ -1,6 +1,6 @@
 # Introduction
 
-**torch** is a lightweight machine learning library for [Source Academy](https://sourceacademy.org), inspired by [PyTorch](https://pytorch.org). It is written in TypeScript/JavaScript and exposed to Python through a [Pyodide](https://pyodide.org) bridge.
+**torch** is a lightweight machine learning library for [Source Academy](https://sourceacademy.org), inspired by [PyTorch](https://pytorch.org). It is written in TypeScript/JavaScript and exposed to Python through a [Pyodide](https://pyodide.org/en/stable/) bridge.
 
 ## Why torch?
 
