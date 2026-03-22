@@ -20,11 +20,11 @@ class MyModel(nn.Module):
 
 **Key Methods**
 
-| Method | Description |
-|---|---|
-| [`forward(x)`]((torch.nn.Module.forward)) | Define the computation. Called by `model(x)`. |
-| [`parameters()`]((torch.nn.Module.parameters)) | Returns a list of all learnable parameters. |
-| [`zero_grad()`]((torch.nn.Module.zero_grad)) | Zeros gradients of all parameters. |
+| Method                                           | Description                                   |
+| ------------------------------------------------ | --------------------------------------------- |
+| [`forward(x)`](<(torch.nn.Module.forward)>)      | Define the computation. Called by `model(x)`. |
+| [`parameters()`](<(torch.nn.Module.parameters)>) | Returns a list of all learnable parameters.   |
+| [`zero_grad()`](<(torch.nn.Module.zero_grad)>)   | Zeros gradients of all parameters.            |
 
 ---
 
@@ -60,18 +60,18 @@ Applies a linear transformation: `y = xW^T + b`.
 
 **Parameters**
 
-| Name | Type | Description |
-|---|---|---|
-| `in_features` | `int` | Size of each input sample. |
-| `out_features` | `int` | Size of each output sample. |
-| `bias` | `bool` | If `False`, no bias term is added. Default: `True`. |
+| Name           | Type   | Description                                         |
+| -------------- | ------ | --------------------------------------------------- |
+| `in_features`  | `int`  | Size of each input sample.                          |
+| `out_features` | `int`  | Size of each output sample.                         |
+| `bias`         | `bool` | If `False`, no bias term is added. Default: `True`. |
 
 **Attributes**
 
-| Attribute | Description |
-|---|---|
+| Attribute | Description                                                     |
+| --------- | --------------------------------------------------------------- |
 | `.weight` | Learnable weight tensor of shape `(out_features, in_features)`. |
-| `.bias` | Learnable bias tensor of shape `(out_features,)`. |
+| `.bias`   | Learnable bias tensor of shape `(out_features,)`.               |
 
 **Example**
 
@@ -93,16 +93,16 @@ Applies a 1D convolution over an input signal composed of several input planes.
 
 **Parameters**
 
-| Name | Type | Description |
-|---|---|---|
-| `in_channels` | `int` | Number of channels in the input. |
-| `out_channels` | `int` | Number of channels produced by the convolution. |
-| `kernel_size` | `int` or `list` | Size of the convolving kernel. |
-| `stride` | `int` or `list` | Stride of the convolution. Default: `1`. |
-| `padding` | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`. |
-| `dilation` | `int` or `list` | Spacing between kernel elements. Default: `1`. |
-| `groups` | `int` | Number of blocked connections from input to output channels. Default: `1`. |
-| `bias` | `bool` | If `True`, adds a learnable bias to the output. Default: `True`. |
+| Name           | Type            | Description                                                                |
+| -------------- | --------------- | -------------------------------------------------------------------------- |
+| `in_channels`  | `int`           | Number of channels in the input.                                           |
+| `out_channels` | `int`           | Number of channels produced by the convolution.                            |
+| `kernel_size`  | `int` or `list` | Size of the convolving kernel.                                             |
+| `stride`       | `int` or `list` | Stride of the convolution. Default: `1`.                                   |
+| `padding`      | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`.               |
+| `dilation`     | `int` or `list` | Spacing between kernel elements. Default: `1`.                             |
+| `groups`       | `int`           | Number of blocked connections from input to output channels. Default: `1`. |
+| `bias`         | `bool`          | If `True`, adds a learnable bias to the output. Default: `True`.           |
 
 ---
 
@@ -116,16 +116,16 @@ Applies a 2D convolution over an input signal composed of several input planes.
 
 **Parameters**
 
-| Name | Type | Description |
-|---|---|---|
-| `in_channels` | `int` | Number of channels in the input image. |
-| `out_channels` | `int` | Number of channels produced by the convolution. |
-| `kernel_size` | `int` or `list` | Size of the convolving kernel. |
-| `stride` | `int` or `list` | Stride of the convolution. Default: `1`. |
-| `padding` | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`. |
-| `dilation` | `int` or `list` | Spacing between kernel elements. Default: `1`. |
-| `groups` | `int` | Number of blocked connections from input to output channels. Default: `1`. |
-| `bias` | `bool` | If `True`, adds a learnable bias to the output. Default: `True`. |
+| Name           | Type            | Description                                                                |
+| -------------- | --------------- | -------------------------------------------------------------------------- |
+| `in_channels`  | `int`           | Number of channels in the input image.                                     |
+| `out_channels` | `int`           | Number of channels produced by the convolution.                            |
+| `kernel_size`  | `int` or `list` | Size of the convolving kernel.                                             |
+| `stride`       | `int` or `list` | Stride of the convolution. Default: `1`.                                   |
+| `padding`      | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`.               |
+| `dilation`     | `int` or `list` | Spacing between kernel elements. Default: `1`.                             |
+| `groups`       | `int`           | Number of blocked connections from input to output channels. Default: `1`. |
+| `bias`         | `bool`          | If `True`, adds a learnable bias to the output. Default: `True`.           |
 
 ---
 
@@ -139,16 +139,16 @@ Applies a 3D convolution over an input signal composed of several input planes.
 
 **Parameters**
 
-| Name | Type | Description |
-|---|---|---|
-| `in_channels` | `int` | Number of channels in the input volume. |
-| `out_channels` | `int` | Number of channels produced by the convolution. |
-| `kernel_size` | `int` or `list` | Size of the convolving kernel. |
-| `stride` | `int` or `list` | Stride of the convolution. Default: `1`. |
-| `padding` | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`. |
-| `dilation` | `int` or `list` | Spacing between kernel elements. Default: `1`. |
-| `groups` | `int` | Number of blocked connections from input to output channels. Default: `1`. |
-| `bias` | `bool` | If `True`, adds a learnable bias to the output. Default: `True`. |
+| Name           | Type            | Description                                                                |
+| -------------- | --------------- | -------------------------------------------------------------------------- |
+| `in_channels`  | `int`           | Number of channels in the input volume.                                    |
+| `out_channels` | `int`           | Number of channels produced by the convolution.                            |
+| `kernel_size`  | `int` or `list` | Size of the convolving kernel.                                             |
+| `stride`       | `int` or `list` | Stride of the convolution. Default: `1`.                                   |
+| `padding`      | `int` or `list` | Zero-padding added to both sides of the input. Default: `0`.               |
+| `dilation`     | `int` or `list` | Spacing between kernel elements. Default: `1`.                             |
+| `groups`       | `int`           | Number of blocked connections from input to output channels. Default: `1`. |
+| `bias`         | `bool`          | If `True`, adds a learnable bias to the output. Default: `True`.           |
 
 ---
 
@@ -243,19 +243,25 @@ Applies the sigmoid function: `f(x) = 1 / (1 + e^(-x))`.
 Functional interfaces are exposed under `torch.nn.functional`.
 
 ### [[torch.nn.functional.relu]]
+
 Applies the rectified linear unit function element-wise.
 
 ### [[torch.nn.functional.sigmoid]]
+
 Applies the sigmoid function element-wise.
 
 ### [[torch.nn.functional.cross_entropy]]
+
 Computes the cross entropy loss between input logits and target.
 
 ### [[torch.nn.functional.conv1d]]
+
 Applies a 1D convolution over an input signal.
 
 ### [[torch.nn.functional.conv2d]]
+
 Applies a 2D convolution over an input signal.
 
 ### [[torch.nn.functional.conv3d]]
+
 Applies a 3D convolution over an input signal.
