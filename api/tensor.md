@@ -509,7 +509,7 @@ Tensor.sigmoid() -> Tensor
 
 See []({torch.sigmoid}).
 
-### [[torch.Tensor.relu]]
+### torch.Tensor.relu
 
 ```python
 Tensor.relu() -> Tensor
