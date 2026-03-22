@@ -3,6 +3,8 @@ import {
   torchReplMarkdownPlugin,
   torchReplVitePlugin,
 } from "./plugins/torch-repl";
+import { pytorchLinkPlugin } from './plugins/pytorch-link'
+import { internalTorchLinkPlugin } from './plugins/internal-torch-link'
 import mathjax3 from 'markdown-it-mathjax3';
 
 export default defineConfig({
@@ -15,7 +17,10 @@ export default defineConfig({
 
   markdown: {
     config(md) {
-      torchReplMarkdownPlugin(md.use(mathjax3));
+      md.use(mathjax3);
+      md.use(pytorchLinkPlugin);
+      md.use(internalTorchLinkPlugin);
+      md.use(torchReplMarkdownPlugin);
     },
   },
 

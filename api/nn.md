@@ -1,10 +1,10 @@
 # torch.nn
 
-Neural network building blocks.
+Building blocks for computational graphs and neural networks.
 
-## Base Class
+## Base Classes
 
-### nn.Module
+### [[torch.nn.Module]]
 
 All neural network components should subclass `nn.Module`.
 
@@ -22,15 +22,35 @@ class MyModel(nn.Module):
 
 | Method | Description |
 |---|---|
-| `.forward(x)` | Define the computation. Called by `model(x)`. |
-| `.parameters()` | Returns a list of all learnable parameters. |
-| `.zero_grad()` | Zeros gradients of all parameters. |
+| [`forward(x)`]((torch.nn.Module.forward)) | Define the computation. Called by `model(x)`. |
+| [`parameters()`]((torch.nn.Module.parameters)) | Returns a list of all learnable parameters. |
+| [`zero_grad()`]((torch.nn.Module.zero_grad)) | Zeros gradients of all parameters. |
+
+---
+
+### [[torch.nn.Parameter]]
+
+A kind of Tensor that is to be considered a module parameter.
+
+---
+
+### [[torch.nn.Sequential]]
+
+A sequential container. Modules will be added to it in the order they are passed in the constructor.
+
+```python
+model = nn.Sequential(
+    nn.Linear(2, 4),
+    nn.ReLU(),
+    nn.Linear(4, 1)
+)
+```
 
 ---
 
 ## Layers
 
-### nn.Linear
+### [[torch.nn.Linear]]
 
 ```python
 nn.Linear(in_features, out_features, bias=True)
@@ -63,9 +83,27 @@ out = layer(x)          # shape: (3, 2)
 
 ---
 
+### [[torch.nn.Conv1d]] **(TODO)**
+
+Applies a 1D convolution over an input signal composed of several input planes.
+
+---
+
+### [[torch.nn.Conv2d]] **(TODO)**
+
+Applies a 2D convolution over an input signal composed of several input planes.
+
+---
+
+### [[torch.nn.Conv3d]] **(TODO)**
+
+Applies a 3D convolution over an input signal composed of several input planes.
+
+---
+
 ## Loss Functions
 
-### nn.MSELoss
+### [[torch.nn.MSELoss]]
 
 ```python
 nn.MSELoss()
@@ -84,7 +122,27 @@ loss = criterion(pred, target)  # scalar tensor
 
 ---
 
-### nn.CrossEntropyLoss
+### [[torch.nn.L1Loss]]
+
+```python
+nn.L1Loss()
+```
+
+Creates a criterion that measures the mean absolute error (MAE) between each element in the input $x$ and target $y$.
+
+---
+
+### [[torch.nn.BCELoss]]
+
+```python
+nn.BCELoss()
+```
+
+Creates a criterion that measures the Binary Cross Entropy between the target and the input probabilities.
+
+---
+
+### [[torch.nn.CrossEntropyLoss]] **(TODO)**
 
 ```python
 nn.CrossEntropyLoss()
@@ -96,7 +154,7 @@ Cross entropy loss for classification tasks.
 
 ## Activation Functions
 
-### nn.ReLU
+### [[torch.nn.ReLU]]
 
 ```python
 nn.ReLU()
@@ -106,10 +164,22 @@ Applies the rectified linear unit function element-wise: `f(x) = max(0, x)`.
 
 ---
 
-### nn.Sigmoid
+### [[torch.nn.Sigmoid]]
 
 ```python
 nn.Sigmoid()
 ```
 
 Applies the sigmoid function: `f(x) = 1 / (1 + e^(-x))`.
+
+---
+
+## Functional API
+
+Functional interfaces are exposed under `torch.nn.functional`.
+
+### [[torch.nn.functional.relu]]
+Applies the rectified linear unit function element-wise.
+
+### [[torch.nn.functional.sigmoid]]
+Applies the sigmoid function element-wise.

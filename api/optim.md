@@ -19,10 +19,10 @@ optimizer.step()
 
 ## Optimizers
 
-### optim.SGD
+### [[torch.optim.SGD]]
 
 ```python
-optim.SGD(params, lr, momentum=0)
+optim.SGD(params, lr, momentum=0, dampening=0, weight_decay=0, nesterov=False, maximize=False)
 ```
 
 Stochastic Gradient Descent.
@@ -32,8 +32,12 @@ Stochastic Gradient Descent.
 | Name | Type | Default | Description |
 |---|---|---|---|
 | `params` | `list` | — | List of parameters (from `model.parameters()`). |
-| `lr` | `float` | — | Learning rate. |
+| `lr` | `float` | `0.001` | Learning rate. |
 | `momentum` | `float` | `0` | Momentum factor. |
+| `dampening` | `float` | `0` | Dampening for momentum. |
+| `weight_decay` | `float` | `0` | Weight decay (L2 penalty). |
+| `nesterov` | `bool` | `False` | Enables Nesterov momentum. |
+| `maximize` | `bool` | `False` | Maximize the params based on the objective, instead of minimizing. |
 
 **Example**
 
@@ -43,10 +47,10 @@ optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
 ---
 
-### optim.Adam
+### [[torch.optim.Adam]]
 
 ```python
-optim.Adam(params, lr=0.001, betas=(0.9, 0.999), eps=1e-8)
+optim.Adam(params, lr=0.001, betas=(0.9, 0.999), eps=1e-8, weight_decay=0.0, amsgrad=False, maximize=False)
 ```
 
 Adam optimizer.
@@ -57,8 +61,11 @@ Adam optimizer.
 |---|---|---|---|
 | `params` | `list` | — | List of parameters. |
 | `lr` | `float` | `0.001` | Learning rate. |
-| `betas` | `tuple` | `(0.9, 0.999)` | Coefficients for computing running averages. |
+| `betas` | `tuple` | `(0.9, 0.999)` | Coefficients for computing running averages of gradient and its square. |
 | `eps` | `float` | `1e-8` | Numerical stability term. |
+| `weight_decay` | `float` | `0.0` | Weight decay (L2 penalty). |
+| `amsgrad` | `bool` | `False` | Whether to use the AMSGrad variant. |
+| `maximize` | `bool` | `False` | Maximize the params based on the objective, instead of minimizing. |
 
 **Example**
 
