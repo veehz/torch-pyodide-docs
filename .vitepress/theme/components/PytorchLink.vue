@@ -1,6 +1,6 @@
 <template>
   <a 
-    :href="`https://docs.pytorch.org/docs/2.10/generated/${name}.html`" 
+    :href="`https://docs.pytorch.org/docs/2.11/generated/${name}.html`" 
     target="_blank" 
     class="ghost-button ignore-header"
   >

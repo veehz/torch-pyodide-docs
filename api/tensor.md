@@ -86,7 +86,7 @@ x.item()
 ### Math Operations
 
 Many math operations are exposed directly as tensor methods:
-[`add(other)`]({torch.Tensor.add}), [`sub(other)`]({torch.Tensor.sub}), [`mul(other)`]({torch.Tensor.mul}), [`div(other)`]({torch.Tensor.div}), [`pow(other)`]({torch.Tensor.pow}), [`matmul(other)`]({torch.Tensor.matmul}), [`neg()`]({torch.Tensor.neg}), [`abs()`]({torch.Tensor.abs}), [`log()`]({torch.Tensor.log}), [`exp()`]({torch.Tensor.exp}), [`sqrt()`]({torch.Tensor.sqrt}), [`square()`]({torch.Tensor.square}), [`sin()`]({torch.Tensor.sin}), [`cos()`]({torch.Tensor.cos}), [`tan()`]({torch.Tensor.tan}), [`sigmoid()`]({torch.Tensor.sigmoid}), [`relu()`]({torch.Tensor.relu}), [`sign()`]({torch.Tensor.sign}), [`reciprocal()`]({torch.Tensor.reciprocal}), [`nan_to_num()`]({torch.Tensor.nan_to_num}).
+[`add(other)`]({torch.Tensor.add}), [`sub(other)`]({torch.Tensor.sub}), [`mul(other)`]({torch.Tensor.mul}), [`div(other)`]({torch.Tensor.div}), [`pow(other)`]({torch.Tensor.pow}), [`fmod(other)`]({torch.Tensor.fmod}), [`matmul(other)`]({torch.Tensor.matmul}), [`neg()`]({torch.Tensor.neg}), [`abs()`]({torch.Tensor.abs}), [`log()`]({torch.Tensor.log}), [`exp()`]({torch.Tensor.exp}), [`sqrt()`]({torch.Tensor.sqrt}), [`square()`]({torch.Tensor.square}), [`sin()`]({torch.Tensor.sin}), [`cos()`]({torch.Tensor.cos}), [`tan()`]({torch.Tensor.tan}), [`sigmoid()`]({torch.Tensor.sigmoid}), [`relu()`]({torch.Tensor.relu}), [`sign()`]({torch.Tensor.sign}), [`reciprocal()`]({torch.Tensor.reciprocal}), [`nan_to_num()`]({torch.Tensor.nan_to_num}).
 
 Additionally, the Python `__add__`, `__sub__`, `__mul__`, `__truediv__`, `__pow__`, and `__matmul__` magic methods are implemented to match standard math operators (+, -, \*, /, \*\*, @).
 
@@ -113,16 +113,6 @@ Returns the shape of the tensor as a tuple.
 ```python repl
 x = torch.tensor([[1, 2], [3, 4]])
 x.shape
-```
-
-### torch.Tensor.data
-
-Returns a detached view of the tensor data (no gradient).
-
-```python repl
-x = torch.tensor([1., 2.], requires_grad=True)
-x.data
-x.data.requires_grad
 ```
 
 ### [[torch.Tensor.requires_grad]]
@@ -420,6 +410,14 @@ Tensor.pow(other) -> Tensor
 ```
 
 See []({torch.pow}).
+
+### [[torch.Tensor.fmod]]
+
+```python
+Tensor.fmod(other) -> Tensor
+```
+
+See []({torch.fmod}).
 
 ### [[torch.Tensor.matmul]]
 

@@ -20,11 +20,11 @@ class MyModel(nn.Module):
 
 **Key Methods**
 
-| Method                                         | Description                                   |
-| ---------------------------------------------- | --------------------------------------------- |
-| [`forward(x)`]({torch.nn.Module.forward})      | Define the computation. Called by `model(x)`. |
-| [`parameters()`]({torch.nn.Module.parameters}) | Returns a list of all learnable parameters.   |
-| [`zero_grad()`]({torch.nn.Module.zero_grad})   | Zeros gradients of all parameters.            |
+| Method                                                       | Description                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------- |
+| [`forward(x)`]({torch.nn.Module.forward})                    | Define the computation. Called by `model(x)`.                 |
+| [`parameters()`]({torch.nn.Module.parameters})               | Returns a list of all learnable parameters.                   |
+| [`named_parameters(prefix='')`]({torch.nn.Module.named_parameters}) | Returns a list of `(name, parameter)` tuples.         |
 
 ---
 
@@ -63,7 +63,7 @@ with torch.no_grad():
 
 ### [[torch.nn.Sequential]]
 
-A sequential container. Modules will be added to it in the order they are passed in the constructor.
+A sequential container. Modules will be added to it in the order they are passed in the constructor. The output of each module is passed as input to the next.
 
 ```python
 model = nn.Sequential(
@@ -72,6 +72,14 @@ model = nn.Sequential(
     nn.Linear(4, 1)
 )
 ```
+
+**Methods**
+
+| Method                             | Description                                              |
+| ---------------------------------- | -------------------------------------------------------- |
+| `append(module)`                   | Appends a module to the end of the container.            |
+| `insert(index, module)`            | Inserts a module at the given index.                     |
+| `extend(sequential)`               | Appends all modules from another `Sequential`.           |
 
 ---
 
@@ -184,10 +192,16 @@ Applies a 3D convolution over an input signal composed of several input planes.
 ### [[torch.nn.MSELoss]]
 
 ```python
-nn.MSELoss()
+nn.MSELoss(reduction='mean')
 ```
 
 Mean Squared Error loss: `loss = mean((pred - target)^2)`.
+
+**Parameters**
+
+| Name        | Type  | Default    | Description                                                      |
+| ----------- | ----- | ---------- | ---------------------------------------------------------------- |
+| `reduction` | `str` | `'mean'`   | Specifies the reduction: `'mean'`, `'sum'`, or `'none'`.         |
 
 **Example**
 
@@ -203,30 +217,49 @@ loss = criterion(pred, target)  # scalar tensor
 ### [[torch.nn.L1Loss]]
 
 ```python
-nn.L1Loss()
+nn.L1Loss(reduction='mean')
 ```
 
-Creates a criterion that measures the mean absolute error (MAE) between each element in the input $x$ and target $y$.
+Creates a criterion that measures the mean absolute error (MAE) between each element in the input $x$ and target $y$: `loss = mean(|x - y|)`.
+
+**Parameters**
+
+| Name        | Type  | Default    | Description                                                      |
+| ----------- | ----- | ---------- | ---------------------------------------------------------------- |
+| `reduction` | `str` | `'mean'`   | Specifies the reduction: `'mean'`, `'sum'`, or `'none'`.         |
 
 ---
 
 ### [[torch.nn.BCELoss]]
 
 ```python
-nn.BCELoss()
+nn.BCELoss(weight=None, reduction='mean')
 ```
 
-Creates a criterion that measures the Binary Cross Entropy between the target and the input probabilities.
+Creates a criterion that measures the Binary Cross Entropy between the target and the input probabilities. Input values should be in the range $[0, 1]$ (e.g., after a sigmoid).
+
+**Parameters**
+
+| Name        | Type             | Default    | Description                                                       |
+| ----------- | ---------------- | ---------- | ----------------------------------------------------------------- |
+| `weight`    | `Tensor` or None | `None`     | A manual rescaling weight for each batch element.                 |
+| `reduction` | `str`            | `'mean'`   | Specifies the reduction: `'mean'`, `'sum'`, or `'none'`.          |
 
 ---
 
 ### [[torch.nn.CrossEntropyLoss]]
 
 ```python
-nn.CrossEntropyLoss()
+nn.CrossEntropyLoss(reduction='mean')
 ```
 
 This criterion computes the cross entropy loss between input logits and target class indices.
+
+**Parameters**
+
+| Name        | Type  | Default    | Description                                                      |
+| ----------- | ----- | ---------- | ---------------------------------------------------------------- |
+| `reduction` | `str` | `'mean'`   | Specifies the reduction: `'mean'`, `'sum'`, or `'none'`.         |
 
 **Input:** `(N, C)` where `N` is the batch size and `C` is the number of classes. Values are unnormalized logits.
 
@@ -267,28 +300,110 @@ Applies the sigmoid function: `f(x) = 1 / (1 + e^(-x))`.
 
 ## Functional API
 
-Functional interfaces are exposed under `torch.nn.functional`.
+Functional interfaces are exposed under `torch.nn.functional`. Unlike the module-based API, these are stateless functions — you pass weights and inputs directly.
 
 ### [[torch.nn.functional.relu]]
 
-Applies the rectified linear unit function element-wise.
+```python
+torch.nn.functional.relu(input) -> Tensor
+```
+
+Applies the rectified linear unit function element-wise: `f(x) = max(0, x)`.
+
+```python
+import torch
+import torch.nn.functional as F
+x = torch.tensor([-1., 0., 1.])
+F.relu(x)
+```
 
 ### [[torch.nn.functional.sigmoid]]
 
-Applies the sigmoid function element-wise.
+```python
+torch.nn.functional.sigmoid(input) -> Tensor
+```
+
+Applies the sigmoid function element-wise: `f(x) = 1 / (1 + e^(-x))`.
+
+```python
+import torch
+import torch.nn.functional as F
+x = torch.tensor([-1., 0., 1.])
+F.sigmoid(x)
+```
 
 ### [[torch.nn.functional.cross_entropy]]
 
-Computes the cross entropy loss between input logits and target.
+```python
+torch.nn.functional.cross_entropy(input, target, reduction='mean') -> Tensor
+```
+
+Computes the cross entropy loss between input logits and target class indices.
+
+**Parameters**
+
+| Name        | Type     | Description                                                      |
+| ----------- | -------- | ---------------------------------------------------------------- |
+| `input`     | `Tensor` | Unnormalized logits of shape `(N, C)`.                           |
+| `target`    | `Tensor` | Target class indices of shape `(N,)`, each in `[0, C)`.          |
+| `reduction` | `str`    | `'mean'` (default), `'sum'`, or `'none'`.                        |
 
 ### [[torch.nn.functional.conv1d]]
 
-Applies a 1D convolution over an input signal.
+```python
+torch.nn.functional.conv1d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) -> Tensor
+```
+
+Applies a 1D convolution over an input signal composed of several input planes.
+
+**Parameters**
+
+| Name       | Type              | Description                                            |
+| ---------- | ----------------- | ------------------------------------------------------ |
+| `input`    | `Tensor`          | Input of shape `(N, C_in, L)`.                         |
+| `weight`   | `Tensor`          | Filters of shape `(C_out, C_in/groups, kW)`.           |
+| `bias`     | `Tensor` or None  | Optional bias of shape `(C_out,)`.                     |
+| `stride`   | `int` or `list`   | Stride of the convolution. Default: `1`.               |
+| `padding`  | `int` or `list`   | Zero-padding on both sides. Default: `0`.              |
+| `dilation` | `int` or `list`   | Spacing between kernel elements. Default: `1`.         |
+| `groups`   | `int`             | Number of blocked connections. Default: `1`.           |
 
 ### [[torch.nn.functional.conv2d]]
 
-Applies a 2D convolution over an input signal.
+```python
+torch.nn.functional.conv2d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) -> Tensor
+```
+
+Applies a 2D convolution over an input signal composed of several input planes.
+
+**Parameters**
+
+| Name       | Type              | Description                                            |
+| ---------- | ----------------- | ------------------------------------------------------ |
+| `input`    | `Tensor`          | Input of shape `(N, C_in, H, W)`.                      |
+| `weight`   | `Tensor`          | Filters of shape `(C_out, C_in/groups, kH, kW)`.       |
+| `bias`     | `Tensor` or None  | Optional bias of shape `(C_out,)`.                     |
+| `stride`   | `int` or `list`   | Stride of the convolution. Default: `1`.               |
+| `padding`  | `int` or `list`   | Zero-padding on both sides. Default: `0`.              |
+| `dilation` | `int` or `list`   | Spacing between kernel elements. Default: `1`.         |
+| `groups`   | `int`             | Number of blocked connections. Default: `1`.           |
 
 ### [[torch.nn.functional.conv3d]]
 
-Applies a 3D convolution over an input signal.
+```python
+torch.nn.functional.conv3d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) -> Tensor
+```
+
+Applies a 3D convolution over an input signal composed of several input planes.
+
+**Parameters**
+
+| Name       | Type              | Description                                              |
+| ---------- | ----------------- | -------------------------------------------------------- |
+| `input`    | `Tensor`          | Input of shape `(N, C_in, D, H, W)`.                    |
+| `weight`   | `Tensor`          | Filters of shape `(C_out, C_in/groups, kD, kH, kW)`.    |
+| `bias`     | `Tensor` or None  | Optional bias of shape `(C_out,)`.                       |
+| `stride`   | `int` or `list`   | Stride of the convolution. Default: `1`.                 |
+| `padding`  | `int` or `list`   | Zero-padding on both sides. Default: `0`.                |
+| `dilation` | `int` or `list`   | Spacing between kernel elements. Default: `1`.           |
+| `groups`   | `int`             | Number of blocked connections. Default: `1`.             |

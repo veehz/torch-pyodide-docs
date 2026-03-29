@@ -60,29 +60,45 @@ y.requires_grad
 
 ### Math operations
 
-| Function                       | Description                                                                    |
-| ------------------------------ | ------------------------------------------------------------------------------ |
-| [`abs`]({torch.abs})           | Computes the absolute value of each element in `input`.                        |
-| [`add`]({torch.add})           | Adds `other` to `input`.                                                       |
-| [`sub`]({torch.sub})           | Subtracts `other` from `input`.                                                |
-| [`mul`]({torch.mul})           | Multiplies `input` by `other`.                                                 |
-| [`div`]({torch.div})           | Divides `input` by `other`.                                                    |
-| [`pow`]({torch.pow})           | Takes the power of each element in `input` with `other`.                       |
-| [`matmul`]({torch.matmul})     | Matrix product of two tensors.                                                 |
-| [`sum`]({torch.sum})           | Returns the sum of all elements in the `input` tensor.                         |
-| [`mean`]({torch.mean})         | Returns the mean value of all elements in the `input` tensor.                  |
-| [`max`]({torch.max})           | Returns the maximum value of all elements in the `input` tensor.               |
-| [`min`]({torch.min})           | Returns the minimum value of all elements in the `input` tensor.               |
-| [`sin`]({torch.sin})           | Returns a new tensor with the sine of the elements of `input`.                 |
-| [`cos`]({torch.cos})           | Returns a new tensor with the cosine of the elements of `input`.               |
-| [`tan`]({torch.tan})           | Returns a new tensor with the tangent of the elements of `input`.              |
-| [`exp`]({torch.exp})           | Returns a new tensor with the exponential of the elements of the input tensor. |
-| [`log`]({torch.log})           | Returns a new tensor with the natural logarithm of the elements of `input`.    |
-| [`sqrt`]({torch.sqrt})         | Returns a new tensor with the square-root of the elements of `input`.          |
-| [`maximum`]({torch.maximum})   | Computes the element-wise maximum of `input` and `other`.                      |
-| [`minimum`]({torch.minimum})   | Computes the element-wise minimum of `input` and `other`.                      |
-| [`allclose`]({torch.allclose}) | This function checks if all `input` and `other` satisfy the condition.         |
-| [`cat`]({torch.cat})           | Concatenates the given sequence of seq tensors in the given dimension.         |
+| Function                               | Description                                                                    |
+| -------------------------------------- | ------------------------------------------------------------------------------ |
+| [`abs`]({torch.abs})                   | Computes the absolute value of each element in `input`.                        |
+| [`neg`]({torch.neg})                   | Returns a new tensor with the negative of the elements of `input`.             |
+| [`sign`]({torch.sign})                 | Returns a new tensor with the sign of the elements of `input`.                 |
+| [`reciprocal`]({torch.reciprocal})     | Returns a new tensor with the reciprocal of the elements of `input`.           |
+| [`nan_to_num`]({torch.nan_to_num})     | Replaces NaN, positive infinity, and negative infinity values in `input`.      |
+| [`add`]({torch.add})                   | Adds `other` to `input`.                                                       |
+| [`sub`]({torch.sub})                   | Subtracts `other` from `input`.                                                |
+| [`mul`]({torch.mul})                   | Multiplies `input` by `other`.                                                 |
+| [`div`]({torch.div})                   | Divides `input` by `other`.                                                    |
+| [`pow`]({torch.pow})                   | Takes the power of each element in `input` with `other`.                       |
+| [`fmod`]({torch.fmod})                 | Computes the element-wise remainder of the division of `input` by `other`.     |
+| [`square`]({torch.square})             | Returns a new tensor with the square of the elements of `input`.               |
+| [`sqrt`]({torch.sqrt})                 | Returns a new tensor with the square-root of the elements of `input`.          |
+| [`exp`]({torch.exp})                   | Returns a new tensor with the exponential of the elements of the input tensor. |
+| [`log`]({torch.log})                   | Returns a new tensor with the natural logarithm of the elements of `input`.    |
+| [`sin`]({torch.sin})                   | Returns a new tensor with the sine of the elements of `input`.                 |
+| [`cos`]({torch.cos})                   | Returns a new tensor with the cosine of the elements of `input`.               |
+| [`tan`]({torch.tan})                   | Returns a new tensor with the tangent of the elements of `input`.              |
+| [`matmul`]({torch.matmul})             | Matrix product of two tensors.                                                 |
+| [`sum`]({torch.sum})                   | Returns the sum of all elements in the `input` tensor.                         |
+| [`mean`]({torch.mean})                 | Returns the mean value of all elements in the `input` tensor.                  |
+| [`max`]({torch.max})                   | Returns the maximum value of all elements in the `input` tensor.               |
+| [`min`]({torch.min})                   | Returns the minimum value of all elements in the `input` tensor.               |
+| [`maximum`]({torch.maximum})           | Computes the element-wise maximum of `input` and `other`.                      |
+| [`minimum`]({torch.minimum})           | Computes the element-wise minimum of `input` and `other`.                      |
+
+### Comparison operations
+
+| Function                               | Description                                                       |
+| -------------------------------------- | ----------------------------------------------------------------- |
+| [`lt`]({torch.lt})                     | Computes `input < other` element-wise.                            |
+| [`gt`]({torch.gt})                     | Computes `input > other` element-wise.                            |
+| [`le`]({torch.le})                     | Computes `input <= other` element-wise.                           |
+| [`ge`]({torch.ge})                     | Computes `input >= other` element-wise.                           |
+| [`eq`]({torch.eq})                     | Computes `input == other` element-wise.                           |
+| [`ne`]({torch.ne})                     | Computes `input != other` element-wise.                           |
+| [`allclose`]({torch.allclose})         | Checks if all elements of `input` and `other` are close.         |
 
 ## Operations
 
@@ -542,6 +558,47 @@ x = torch.tensor([1, 2])
 torch.ne(x, 2)
 ```
 
+### [[torch.maximum]]
+
+```python
+torch.maximum(input, other) -> Tensor
+```
+
+Computes the element-wise maximum of `input` and `other`.
+
+```python repl
+x = torch.tensor([1., 3.])
+y = torch.tensor([2., 2.])
+torch.maximum(x, y)
+```
+
+### [[torch.minimum]]
+
+```python
+torch.minimum(input, other) -> Tensor
+```
+
+Computes the element-wise minimum of `input` and `other`.
+
+```python repl
+x = torch.tensor([1., 3.])
+y = torch.tensor([2., 2.])
+torch.minimum(x, y)
+```
+
+### [[torch.fmod]]
+
+```python
+torch.fmod(input, other) -> Tensor
+```
+
+Computes the element-wise remainder of the division of `input` by `other`.
+
+```python repl
+x = torch.tensor([7., 10.])
+torch.fmod(x, 3)
+```
+
 ### [[torch.allclose]]
 
 ```python
@@ -554,4 +611,335 @@ This function checks if `input` and `other` satisfy the condition.
 x = torch.tensor([1., 2.])
 y = torch.tensor([1.00001, 2.])
 torch.allclose(x, y)
+```
+
+---
+
+## Tensor Utilities
+
+### [[torch.is_tensor]]
+
+```python
+torch.is_tensor(obj) -> bool
+```
+
+Returns `True` if `obj` is a PyTorch tensor.
+
+```python repl
+x = torch.tensor([1.])
+torch.is_tensor(x)
+torch.is_tensor([1.])
+```
+
+### [[torch.is_nonzero]]
+
+```python
+torch.is_nonzero(input) -> bool
+```
+
+Returns `True` if the input is a single element tensor which is not equal to zero after type conversions. Raises an error if the tensor has more than one element.
+
+```python repl
+torch.is_nonzero(torch.tensor([0.]))
+torch.is_nonzero(torch.tensor([1.5]))
+```
+
+### [[torch.numel]]
+
+```python
+torch.numel(input) -> int
+```
+
+Returns the total number of elements in the `input` tensor.
+
+```python repl
+x = torch.tensor([[1, 2], [3, 4]])
+torch.numel(x)
+```
+
+---
+
+## Creation Ops
+
+### [[torch.tensor]]
+
+```python
+torch.tensor(data, requires_grad=False) -> Tensor
+```
+
+Creates a tensor from `data` (a Python list or nested list of numbers).
+
+```python repl
+torch.tensor([[1., -1.], [1., -1.]])
+torch.tensor([1, 2, 3, 4])
+torch.tensor([1., 2.], requires_grad=True)
+```
+
+### [[torch.zeros]]
+
+```python
+torch.zeros(*size) -> Tensor
+```
+
+Returns a tensor filled with the scalar value 0, with the shape defined by the variable argument `size`.
+
+```python repl
+torch.zeros(2, 3)
+torch.zeros([2, 3])
+```
+
+### [[torch.zeros_like]]
+
+```python
+torch.zeros_like(input) -> Tensor
+```
+
+Returns a tensor filled with the scalar value 0, with the same shape as `input`.
+
+```python repl
+x = torch.tensor([[1, 2], [3, 4]])
+torch.zeros_like(x)
+```
+
+### [[torch.ones]]
+
+```python
+torch.ones(*size) -> Tensor
+```
+
+Returns a tensor filled with the scalar value 1, with the shape defined by the variable argument `size`.
+
+```python repl
+torch.ones(2, 3)
+```
+
+### [[torch.ones_like]]
+
+```python
+torch.ones_like(input) -> Tensor
+```
+
+Returns a tensor filled with the scalar value 1, with the same shape as `input`.
+
+```python repl
+x = torch.tensor([[1, 2], [3, 4]])
+torch.ones_like(x)
+```
+
+### [[torch.empty]]
+
+```python
+torch.empty(*size) -> Tensor
+```
+
+Returns an uninitialized tensor with the shape defined by the variable argument `size`.
+
+```python repl
+torch.empty(2, 3)
+```
+
+### [[torch.empty_like]]
+
+```python
+torch.empty_like(input) -> Tensor
+```
+
+Returns an uninitialized tensor with the same shape as `input`.
+
+```python repl
+x = torch.tensor([[1, 2], [3, 4]])
+torch.empty_like(x)
+```
+
+### [[torch.full]]
+
+```python
+torch.full(shape, fill_value) -> Tensor
+```
+
+Returns a tensor filled with `fill_value`, with the shape defined by `shape`.
+
+```python repl
+torch.full([2, 3], 3.14)
+```
+
+### [[torch.full_like]]
+
+```python
+torch.full_like(input, fill_value) -> Tensor
+```
+
+Returns a tensor filled with `fill_value`, with the same shape as `input`.
+
+```python repl
+x = torch.tensor([[1, 2], [3, 4]])
+torch.full_like(x, 7)
+```
+
+### [[torch.arange]]
+
+```python
+torch.arange(start, end, step=1) -> Tensor
+```
+
+Returns a 1-D tensor with values from `start` to `end` (exclusive) with step `step`.
+
+```python repl
+torch.arange(0, 5)
+torch.arange(1, 5, 0.5)
+```
+
+### [[torch.linspace]]
+
+```python
+torch.linspace(start, end, steps) -> Tensor
+```
+
+Creates a one-dimensional tensor of size `steps` whose values are evenly spaced from `start` to `end`, inclusive.
+
+```python repl
+torch.linspace(0, 1, 5)
+```
+
+---
+
+## Random Sampling
+
+### [[torch.seed]]
+
+```python
+torch.seed()
+```
+
+Sets the seed for generating random numbers to a non-deterministic random number.
+
+### [[torch.manual_seed]]
+
+```python
+torch.manual_seed(seed)
+```
+
+Sets the seed for generating random numbers. Use this to get reproducible results.
+
+```python repl
+torch.manual_seed(42)
+torch.randn(2, 2)
+```
+
+### [[torch.rand]]
+
+```python
+torch.rand(*size) -> Tensor
+```
+
+Returns a tensor filled with random numbers from a uniform distribution on the interval $[0, 1)$.
+
+```python repl
+torch.rand(2, 3)
+```
+
+### [[torch.rand_like]]
+
+```python
+torch.rand_like(input) -> Tensor
+```
+
+Returns a tensor with the same size as `input` filled with random numbers from a uniform distribution on the interval $[0, 1)$.
+
+```python repl
+x = torch.zeros(2, 3)
+torch.rand_like(x)
+```
+
+### [[torch.randint]]
+
+```python
+torch.randint(low, high, size) -> Tensor
+```
+
+Returns a tensor filled with random integers generated uniformly between `low` (inclusive) and `high` (exclusive).
+
+```python repl
+torch.randint(0, 10, [2, 3])
+```
+
+### [[torch.randint_like]]
+
+```python
+torch.randint_like(input, low, high) -> Tensor
+```
+
+Returns a tensor with the same shape as `input` filled with random integers between `low` (inclusive) and `high` (exclusive).
+
+```python repl
+x = torch.zeros(2, 3)
+torch.randint_like(x, 0, 10)
+```
+
+### [[torch.randn]]
+
+```python
+torch.randn(*size) -> Tensor
+```
+
+Returns a tensor filled with random numbers from a normal distribution with mean 0 and variance 1.
+
+```python repl
+torch.randn(2, 3)
+```
+
+### [[torch.randn_like]]
+
+```python
+torch.randn_like(input) -> Tensor
+```
+
+Returns a tensor with the same size as `input` filled with random numbers from a normal distribution with mean 0 and variance 1.
+
+```python repl
+x = torch.zeros(2, 3)
+torch.randn_like(x)
+```
+
+### [[torch.randperm]]
+
+```python
+torch.randperm(n) -> Tensor
+```
+
+Returns a tensor containing a random permutation of integers from $0$ to $n - 1$.
+
+```python repl
+torch.randperm(5)
+```
+
+---
+
+## Gradient Control
+
+### [[torch.no_grad]]
+
+```python
+torch.no_grad()
+```
+
+Context manager that disables gradient computation. Operations inside the block do not track gradients, which reduces memory usage and speeds up computation during inference.
+
+```python repl
+x = torch.tensor([1., 2.], requires_grad=True)
+with torch.no_grad():
+    y = x * 2
+y.requires_grad
+```
+
+### [[torch.is_grad_enabled]]
+
+```python
+torch.is_grad_enabled() -> bool
+```
+
+Returns `True` if grad mode is currently enabled.
+
+```python repl
+torch.is_grad_enabled()
 ```

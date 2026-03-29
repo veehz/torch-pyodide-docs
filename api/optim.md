@@ -79,10 +79,18 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 All optimizers share these methods:
 
-### .step()
+### [[torch.optim.Optimizer.step]]
 
-Updates all parameters using their stored gradients.
+```python
+optimizer.step()
+```
 
-### .zero_grad()
+Updates all parameters using their stored gradients. Call this after `loss.backward()`.
 
-Resets gradients of all tracked parameters to zero. Call this before each backward pass.
+### [[torch.optim.Optimizer.zero_grad]]
+
+```python
+optimizer.zero_grad()
+```
+
+Resets gradients of all tracked parameters to zero. Call this before each `loss.backward()` to prevent gradient accumulation.
