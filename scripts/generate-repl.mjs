@@ -8,7 +8,7 @@
  *   node scripts/generate-repl.mjs
  *
  * Environment variables:
- *   TORCH_URL   URL to torch UMD build (default: veehz GitHub Pages CDN)
+ *   TORCH_URL   URL to torch UMD build (default: GitHub Pages CDN)
  *   BRIDGE_PATH Path to bridge.py (default: ./bridge.py in repo root)
  */
 
@@ -17,7 +17,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { glob } from "glob";
 import path from "path";
 import { fileURLToPath } from "url";
-import * as torch from "@veehz/torch";
+import * as torch from "torch";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -151,7 +151,7 @@ async function main() {
 
   console.log("  Loading Pyodide...");
   const pyodide = await loadPyodide();
-  console.log("  torch loaded (from @veehz/torch).\n");
+  console.log("  torch loaded (from torch).\n");
 
   // Inject torch into Pyodide globals
   pyodide.globals.set("js_torch", torch);
@@ -160,7 +160,7 @@ async function main() {
   if (!existsSync(BRIDGE_PATH)) {
     throw new Error(
       `bridge.py not found at ${BRIDGE_PATH}.\n` +
-        `Copy bridge.py from veehz/torch into the repo root, ` +
+        `Copy bridge.py from torch into the repo root, ` +
         `or set the BRIDGE_PATH env var.`
     );
   }

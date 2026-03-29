@@ -16,7 +16,7 @@ Source Academy runs in the browser. Real PyTorch cannot run in WebAssembly. torc
              │  JS ↔ Python FFI
 ┌────────────▼────────────────────┐
 │    TypeScript / JavaScript      │
-│         veehz/torch             │
+│     source-academy/torch        |
 └─────────────────────────────────┘
 ```
 

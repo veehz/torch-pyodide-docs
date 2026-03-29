@@ -850,13 +850,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@veehz/torch@https://pkg.pr.new/veehz/torch@6007969":
-  version: 0.1.0
-  resolution: "@veehz/torch@https://pkg.pr.new/veehz/torch@6007969"
-  checksum: 10c0/aa0fffca6e3c4fad2b6c7adbc33379769799321706c04b4380ae04160db08daf272ac0f53d44fac253984d21c07838041ea16c10dd62732d2b5f4e913a1adcc1
-  languageName: node
-  linkType: hard
-
 "@vitejs/plugin-vue@npm:^5.2.1":
   version: 5.2.4
   resolution: "@vitejs/plugin-vue@npm:5.2.4"
@@ -2516,13 +2509,20 @@ __metadata:
   resolution: "torch-pyodide-docs@workspace:."
   dependencies:
     "@types/node": "npm:^25.5.0"
-    "@veehz/torch": "https://pkg.pr.new/veehz/torch@6007969"
     glob: "npm:^11.0.0"
     markdown-it-mathjax3: "npm:^4"
     pyodide: "npm:^0.26.0"
+    torch: "https://pkg.pr.new/veehz/torch@6007969"
     vitepress: "npm:^1.6.4"
   languageName: unknown
   linkType: soft
+
+"torch@https://pkg.pr.new/veehz/torch@6007969":
+  version: 0.1.0
+  resolution: "torch@https://pkg.pr.new/veehz/torch@6007969"
+  checksum: 10c0/bde381a0d266c845970fd34b3d27048709b60fd9e64a2d96f3080eb9c3a4bb1433bcc0ea1bc1123fbb31883ad2623c031ede94319e514f54398b9752c290c6d4
+  languageName: node
+  linkType: hard
 
 "tr46@npm:~0.0.3":
   version: 0.0.3
