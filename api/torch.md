@@ -55,8 +55,8 @@ y.requires_grad
 
 | Function                                     | Description                                         |
 | -------------------------------------------- | --------------------------------------------------- |
-| [`no_grad`]({torch.no.grad})                 | Context manager that disables gradient computation. |
-| [`is_grad_enabled`]({torch.is.grad.enabled}) | Returns True if grad mode is currently enabled.     |
+| [`no_grad`]({torch.no_grad})                 | Context manager that disables gradient computation. |
+| [`is_grad_enabled`]({torch.is_grad_enabled}) | Returns True if grad mode is currently enabled.     |
 
 ### Math operations
 
