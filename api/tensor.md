@@ -26,7 +26,6 @@ torch.randn(2, 3)
 | Attribute                                       | Description                                                                                                                   |
 | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | [`shape`]({torch.Tensor.shape})                 | Returns the shape of the tensor.                                                                                              |
-| [`data`]({torch.Tensor.data})                   | Returns a detached view of the tensor data (no gradient).                                                                     |
 | [`requires_grad`]({torch.Tensor.requires_grad}) | Is `True` if gradients need to be computed for this Tensor.                                                                   |
 | [`grad`]({torch.Tensor.grad})                   | This attribute is `None` by default and becomes a Tensor the first time a call to `backward()` computes gradients for `self`. |
 | [`T`]({torch.Tensor.T})                         | Returns a view of this tensor with its dimensions reversed.                                                                   |
