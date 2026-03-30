@@ -20,5 +20,10 @@ jobs:
 
       - uses: lycheeverse/lychee-action@v2
         with:
-          args: --root-dir . --verbose --no-progress './${{ github.event.repository.name }}/**/*.html'
+          args: >
+            --root-dir . 
+            --verbose 
+            --no-progress 
+            --include-fragments 
+            './**/*.html'
           fail: true
